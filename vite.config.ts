@@ -5,6 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
+      // Set base to '/' for custom domain or '/repo-name/' for github.io/repo-name
+      base: mode === 'production' ? '/ArtSkin_Website/' : '/',
       server: {
         port: 3000,
         host: '0.0.0.0',
