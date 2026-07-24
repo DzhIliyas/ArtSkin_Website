@@ -14,7 +14,7 @@ export const FounderStory: React.FC = () => (
       <div className="grid gap-14 lg:grid-cols-[.82fr_1.18fr] lg:items-center">
         <figure className="relative">
           <div className="overflow-hidden rounded-[1.6rem] border border-brand-border bg-brand-surface">
-            <img src="/assets/iliias-dzhentaev.png" alt="Iliias Dzhentaev, founder and CEO of ArtSkin" className="aspect-[4/5] h-full w-full object-cover object-[50%_38%]" />
+            <img src="/assets/iliias-dzhentaev.png" alt="Iliias Dzhentaev, founder and CEO of ArtSkin" className="block h-auto w-full object-contain" />
           </div>
           <figcaption className="mt-4 flex items-center justify-between border-b border-brand-border pb-4 text-[10px] uppercase tracking-[.15em] text-gray-500">
             <span>Iliias Dzhentaev</span>
