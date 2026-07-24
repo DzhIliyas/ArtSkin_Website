@@ -1,58 +1,70 @@
 import React from 'react';
-import { Quote } from 'lucide-react';
+import { ArrowUpRight, Bot, Box, Hand, RadioTower } from 'lucide-react';
 
-export const Story: React.FC = () => {
-  return (
-    <section id="story" className="py-32 bg-brand-black relative">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-24 items-start">
-          
-          <div className="lg:w-5/12 relative">
-             <div className="aspect-[3/4] overflow-hidden bg-gray-900 border border-brand-border grayscale contrast-125 hover:grayscale-0 transition-all duration-700">
-                <img 
-                  src="https://picsum.photos/600/800?grayscale" 
-                  alt="Iliias Dzheentaev" 
-                  className="w-full h-full object-cover"
-                />
-             </div>
-             <div className="mt-4 flex justify-between items-end border-b border-white pb-2">
-                <div>
-                  <h3 className="text-2xl font-display font-medium text-white uppercase tracking-wider">Iliias Dzheentaev</h3>
-                  <p className="text-xs text-brand-accent font-mono uppercase mt-1">Founder / CTO</p>
-                </div>
-                <span className="text-xs text-gray-600 font-mono">EST. 2024</span>
-             </div>
-          </div>
+const markets = [
+  {
+    icon: Hand,
+    label: 'First market',
+    title: 'Prosthetics',
+    copy: 'Provide spatially mapped tactile feedback without requiring an invasive implant.',
+    status: 'Clinical pathway',
+  },
+  {
+    icon: Box,
+    label: 'Next interface',
+    title: 'XR & spatial computing',
+    copy: 'Translate virtual contact, pressure and object interaction into tactile feedback on the user’s skin.',
+    status: 'Glove development',
+  },
+  {
+    icon: RadioTower,
+    label: 'Shared future',
+    title: 'Robotics & teleoperation',
+    copy: 'Return information about remote contact to the operator during manipulation and control.',
+    status: 'Platform expansion',
+  },
+  {
+    icon: Bot,
+    label: 'Embodied intelligence',
+    title: 'Humanoid robotics',
+    copy: 'Capture physical contact across robotic surfaces to support interaction, manipulation and tactile data collection.',
+    status: 'Tactile training layer',
+  },
+];
 
-          <div className="lg:w-7/12 pt-10">
-            <span className="text-brand-accent text-xs font-bold tracking-widest uppercase mb-6 block">
-              Origin Story
-            </span>
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-10 leading-tight">
-              "How does a robot know <br /> it is holding a hand?"
-            </h2>
-            
-            <div className="text-gray-400 text-lg font-light space-y-8 max-w-2xl">
-              <p>
-                My background is in microelectronics. My first job was building robotic manipulators. I solved the mechanical problem of grip, but I couldn't solve the problem of <i>feeling</i>.
-              </p>
-              
-              <p>
-                When I started researching prosthetics, I was shocked. High-end bionic arms cost a fortune but provide zero sensory feedback. Users have to watch their hand to know if they are crushing a cup or dropping it. 
-              </p>
-
-              <div className="pl-6 border-l-2 border-white text-white italic font-display text-xl py-2">
-                "The brain learns to use the tool, but never accepts it as part of the self."
-              </div>
-
-              <p>
-                ArtSkin was born from 3 years of solitary research into the human nervous system. Today, backed by High Technology Park and Silicon Valley advisors, we are turning that research into clinical reality.
-              </p>
-            </div>
-          </div>
-
+export const Applications: React.FC = () => (
+  <section id="applications" className="section-rule bg-brand-black py-24 md:py-36">
+    <div className="mx-auto max-w-[1480px] px-5 md:px-10">
+      <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+        <div>
+          <span className="eyebrow">Where it goes next</span>
+          <h2 className="mt-7 max-w-3xl font-display text-5xl font-medium leading-[.95] tracking-[-.055em] text-brand-white md:text-7xl">
+            Begin with prosthetics. Expand wherever touch is missing.
+          </h2>
         </div>
+        <p className="max-w-md text-sm leading-relaxed text-gray-500">ArtSkin is initially being developed for prosthetics, where missing tactile feedback limits control and rehabilitation. The same interface architecture can later support virtual reality, teleoperation and robotic systems.</p>
       </div>
-    </section>
-  );
-};
+
+      <div className="mt-14 grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
+        {markets.map(({ icon: Icon, label, title, copy, status }, index) => (
+          <article key={title} className="market-card min-h-[440px] rounded-[1.5rem] border border-brand-border bg-brand-surface p-7 md:p-9">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[10px] uppercase tracking-[.17em] text-brand-accent">{label}</span>
+              <span className="outline-number font-display text-4xl font-semibold">0{index + 1}</span>
+            </div>
+            <Icon className="mt-20 h-10 w-10 text-brand-white" strokeWidth={1.2} />
+            <h3 className="mt-8 font-display text-3xl font-medium tracking-[-.04em] text-brand-white 2xl:text-4xl">{title}</h3>
+            <p className="mt-5 text-base font-light leading-relaxed text-gray-400">{copy}</p>
+            <div className="absolute bottom-10 left-9 flex items-center gap-2 text-[10px] uppercase tracking-[.14em] text-gray-500">
+              <span className="signal-dot" /> {status}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <a href="mailto:contact@artskin.ai?subject=ArtSkin%20integration" className="mt-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em] text-brand-white transition hover:text-brand-accent">
+        Discuss an integration <ArrowUpRight className="h-4 w-4" />
+      </a>
+    </div>
+  </section>
+);

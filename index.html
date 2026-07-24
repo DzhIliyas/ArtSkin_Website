@@ -3,7 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ArtSkin - Future of Prosthetics</title>
+    <title>ArtSkin — Bringing touch back into the loop</title>
+    <meta name="description" content="ArtSkin builds non-invasive sensory interfaces that bring adaptive tactile feedback to prosthetics, robotics and XR systems." />
+    <meta name="theme-color" content="#070909" />
+    <meta property="og:title" content="ArtSkin — Bringing touch back into the loop" />
+    <meta property="og:description" content="Non-invasive sensory interfaces for prosthetics, robotics and XR." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://artskin.ai" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -16,12 +22,13 @@
             },
             colors: {
               brand: {
-                black: '#000000',
-                dark: '#050505',
-                surface: '#0F0F0F',
-                border: '#1F1F1F',
-                accent: '#3B82F6', // Electric Blue
-                white: '#FFFFFF',
+                black: '#070909',
+                dark: '#0B0E0D',
+                surface: '#111514',
+                border: '#28302E',
+                accent: '#7FFFD4',
+                lime: '#D8FF66',
+                white: '#F4F5EF',
               }
             },
             backgroundImage: {
@@ -32,8 +39,10 @@
             },
             keyframes: {
               scan: {
-                '0%': { transform: 'translateY(-100%)' },
-                '100%': { transform: 'translateY(100%)' },
+                '0%': { transform: 'translateY(-100%)', opacity: 0 },
+                '15%': { opacity: 0.7 },
+                '85%': { opacity: 0.7 },
+                '100%': { transform: 'translateY(100%)', opacity: 0 },
               }
             }
           },
@@ -53,9 +62,10 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #555;
       }
+      html { scroll-behavior: smooth; }
       body {
-        background-color: #000000;
-        color: white;
+        background-color: #070909;
+        color: #F4F5EF;
         font-family: 'Inter', sans-serif;
       }
       .font-display {

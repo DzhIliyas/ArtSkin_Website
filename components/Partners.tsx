@@ -1,24 +1,20 @@
 import React from 'react';
 
-export const Partners: React.FC = () => {
-  return (
-    <section className="py-20 bg-brand-black border-t border-brand-border">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <div className="flex flex-wrap justify-between items-center opacity-40 grayscale hover:grayscale-0 transition-all duration-500 gap-8">
-           <span className="text-2xl font-display font-bold text-white uppercase tracking-tighter">
-             High Technology Park
-           </span>
-           <span className="text-2xl font-display font-bold text-white uppercase tracking-tighter">
-             Draper University
-           </span>
-           <span className="text-2xl font-display font-bold text-white uppercase tracking-tighter">
-             Silicon Valley Dive
-           </span>
-           <span className="text-2xl font-display font-bold text-white uppercase tracking-tighter">
-             Unicorn KG
-           </span>
-        </div>
+const names = ['TechCrunch Battlefield 200', 'Draper University', 'Constructor Start', 'High Technology Park'];
+
+export const Partners: React.FC = () => (
+  <section aria-label="Recognition" className="border-b border-brand-border bg-brand-black">
+    <div className="mx-auto grid max-w-[1480px] md:grid-cols-[220px_1fr]">
+      <div className="flex items-center border-b border-brand-border px-5 py-8 font-mono text-[10px] uppercase tracking-[.18em] text-gray-600 md:border-b-0 md:border-r md:px-10">
+        Selected & supported by
       </div>
-    </section>
-  );
-};
+      <div className="grid grid-cols-2 lg:grid-cols-4">
+        {names.map((name, index) => (
+          <div key={name} className={`press-wordmark flex min-h-[92px] items-center border-brand-border px-5 font-display text-sm font-medium leading-tight text-gray-500 md:px-8 ${index % 2 ? 'border-l' : ''} ${index > 1 ? 'border-t lg:border-t-0' : ''} ${index > 0 ? 'lg:border-l' : ''}`}>
+            {name}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);

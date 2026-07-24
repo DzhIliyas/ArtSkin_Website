@@ -1,30 +1,30 @@
 # ArtSkin
 
-Landing website for **ArtSkin** — next-generation artificial skin that restores sensation for amputees by closing the bionic feedback loop.
+Landing website for **ArtSkin** — a non-invasive sensory interface platform for prosthetics, XR and robotic systems.
 
 Live: https://artskin.ai
 
 ## About the project
 
-Conventional prosthetics are a one-way street: muscle signals go out, but no sensation comes back. ArtSkin engineers an artificial skin layer that wraps existing prosthetic platforms and stimulates the peripheral nervous system directly, so the user can feel pressure, texture, and temperature in real time.
+Most human–machine interfaces are a one-way street: commands go out, but useful sensation does not come back. ArtSkin adds the missing return path with a modular layer that senses contact, adapts stimulation to the individual and communicates through the peripheral nervous system.
 
 This repository contains the public-facing site that introduces the technology, the team, and the roadmap. It is a single-page experience composed of:
 
-- **Hero** — the ArtSkin promise (`SENSATION RESTORED.`) and primary call-to-action
-- **Features** — core capabilities (tactile precision, thermal sensing, universal neural interface) with a live simulation chart and key spec tiles (32 sensors/unit, <15 ms latency)
-- **Story** — mission and origin
-- **Timeline** — development and clinical-trial milestones
-- **Media / Partners** — press coverage and partner logos
-- **Footer** — contact and social links
+- **Hero** — the ArtSkin promise and interactive tactile-field visual
+- **Mission** — the human need, non-invasive strategy and company foundation
+- **Platform** — a clear four-step explanation of the sensory feedback loop
+- **Applications** — prosthetics, XR and robotic teleoperation
+- **Story** — Iliias Dzhentaev's engineering background, company timeline and original photography
+- **Press & recognition** — verified programs and awards, with space for the full media archive
+- **Footer** — collaboration CTA and verified contact links
 
-The visual language is dark, technical, and grid-driven — built to feel closer to medical-device documentation than a typical product page.
+The visual language is dark, technical and tactile: restrained typography, signal-map graphics, responsive motion and an electric mint palette.
 
 ## Tech stack
 
 - **Vite 6** + **React 19** + **TypeScript**
 - **Tailwind CSS** (loaded via CDN, configured inline in `index.html`)
 - **lucide-react** for iconography
-- **recharts** for the simulation chart
 - **GitHub Pages** + **GitHub Actions** for hosting and CD
 
 ## Project structure
@@ -52,6 +52,10 @@ npm run dev
 ```
 
 The dev server runs on http://localhost:3000.
+
+On Windows, you can also double-click `START_LOCAL_PREVIEW.bat`. It installs
+dependencies when needed, starts the development server and opens the site in
+your default browser.
 
 ## Build
 

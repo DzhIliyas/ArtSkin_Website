@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import posthog from 'posthog-js';
-import { PostHogProvider } from '@posthog/react';
 import App from './App';
+import './styles.css';
 
-posthog.init(import.meta.env.VITE_PUBLIC_POSTHOG_TOKEN, {
-  api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
-  defaults: '2026-01-30',
-});
+if (import.meta.env.VITE_PUBLIC_POSTHOG_TOKEN) {
+  const loadAnalytics = () => {
+    import('posthog-js').then(({ default: posthog }) => {
+      posthog.init(import.meta.env.VITE_PUBLIC_POSTHOG_TOKEN, {
+        api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
+        defaults: '2026-01-30',
+      });
+    });
+  };
+  if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(loadAnalytics);
+  else globalThis.setTimeout(loadAnalytics, 1000);
+}
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -17,8 +24,6 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <PostHogProvider client={posthog}>
-      <App />
-    </PostHogProvider>
+    <App />
   </React.StrictMode>
 );

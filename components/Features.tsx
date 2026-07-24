@@ -1,73 +1,60 @@
 import React from 'react';
-import { Fingerprint, Thermometer, Cpu, ScanLine } from 'lucide-react';
-import { SimulationChart } from './SimulationChart';
+import { Hand, HeartHandshake, Layers3, Sparkles } from 'lucide-react';
 
-export const Features: React.FC = () => {
-  return (
-    <section id="technology" className="py-32 bg-brand-surface border-t border-brand-border">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        
-        <div className="flex flex-col lg:flex-row gap-20">
-          
-          {/* Left: Specs & Text */}
-          <div className="lg:w-1/2">
-            <span className="text-brand-accent text-xs font-bold tracking-widest uppercase mb-4 block">
-              Core Technology
-            </span>
-            <h2 className="text-4xl md:text-5xl font-display font-medium text-white mb-8">
-              BIONIC <br /> FEEDBACK LOOP
-            </h2>
-            <p className="text-gray-400 text-lg font-light leading-relaxed mb-12 border-l border-brand-border pl-6">
-              Current bionics are a one-way street: muscle signals go out, but sensation doesn't come back. ArtSkin closes the loop by stimulating the peripheral nervous system directly.
-            </p>
+const pillars = [
+  {
+    icon: Hand,
+    index: '01',
+    title: 'Mapped feedback',
+    description: 'Each sensing zone is linked to a defined stimulation coordinate, preserving the spatial relationship between contact and sensation.',
+  },
+  {
+    icon: HeartHandshake,
+    index: '02',
+    title: 'Individual calibration',
+    description: 'Electrical response varies across users and skin conditions, so stimulation parameters are adjusted instead of applying one fixed profile.',
+  },
+  {
+    icon: Layers3,
+    index: '03',
+    title: 'Modular integration',
+    description: 'ArtSkin is being developed as a technology layer for prosthetics and other systems that manufacturers already build.',
+  },
+  {
+    icon: Sparkles,
+    index: '04',
+    title: 'Configurable profiles',
+    description: 'Spatial location, intensity, timing and waveform can be configured to study distinct tactile perceptions.',
+  },
+];
 
-            <div className="grid grid-cols-1 gap-0 border border-brand-border divide-y divide-brand-border bg-brand-black">
-              <div className="p-6 flex items-start group hover:bg-white/5 transition-colors">
-                <Fingerprint className="h-6 w-6 text-white mt-1 mr-4" />
-                <div>
-                  <h3 className="text-white font-display font-bold uppercase tracking-wider mb-2">Tactile Precision</h3>
-                  <p className="text-sm text-gray-500">Detects grasping force for handling non-rigid objects without crushing.</p>
-                </div>
-              </div>
-
-              <div className="p-6 flex items-start group hover:bg-white/5 transition-colors">
-                <Thermometer className="h-6 w-6 text-white mt-1 mr-4" />
-                <div>
-                  <h3 className="text-white font-display font-bold uppercase tracking-wider mb-2">Thermal Sensing</h3>
-                  <p className="text-sm text-gray-500">Real-time temperature gradient detection and environmental feedback.</p>
-                </div>
-              </div>
-
-              <div className="p-6 flex items-start group hover:bg-white/5 transition-colors">
-                <Cpu className="h-6 w-6 text-white mt-1 mr-4" />
-                <div>
-                  <h3 className="text-white font-display font-bold uppercase tracking-wider mb-2">Universal Neural Interface</h3>
-                  <p className="text-sm text-gray-500">Compatible with major upper and lower limb prosthetic platforms.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Simulation / Visuals */}
-          <div className="lg:w-1/2 flex flex-col gap-6">
-             <div className="h-[400px] w-full">
-                <SimulationChart />
-             </div>
-             
-             <div className="grid grid-cols-2 gap-6">
-                <div className="bg-brand-black border border-brand-border p-6 flex flex-col justify-between h-32 hover:border-white transition-colors">
-                  <span className="text-xs text-gray-500 font-mono uppercase">Sensor Density</span>
-                  <span className="text-4xl font-display text-white">32<span className="text-sm text-brand-accent">/unit</span></span>
-                </div>
-                <div className="bg-brand-black border border-brand-border p-6 flex flex-col justify-between h-32 hover:border-white transition-colors">
-                   <span className="text-xs text-gray-500 font-mono uppercase">Latency</span>
-                   <span className="text-4xl font-display text-white">&lt;15<span className="text-sm text-brand-accent">ms</span></span>
-                </div>
-             </div>
-          </div>
-
+export const Features: React.FC = () => (
+  <section id="platform" className="section-rule bg-brand-dark py-24 md:py-36">
+    <div className="mx-auto max-w-[1480px] px-5 md:px-10">
+      <div className="grid gap-12 border-b border-brand-border pb-16 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
+        <div>
+          <span className="eyebrow">System design</span>
+          <h2 className="mt-7 max-w-xl font-display text-5xl font-medium leading-[.95] tracking-[-.055em] text-brand-white md:text-7xl">
+            Built for individual physiology.
+          </h2>
         </div>
+        <p className="max-w-2xl text-lg font-light leading-relaxed text-gray-400 lg:justify-self-end lg:text-xl">
+          ArtSkin measures differences in electrical response and is designed to adjust stimulation parameters for each user. The resulting physiological and perceptual data will support personalized calibration models.
+        </p>
       </div>
-    </section>
-  );
-};
+
+      <div className="grid border-x border-b border-brand-border md:grid-cols-2 xl:grid-cols-4">
+        {pillars.map(({ icon: Icon, index, title, description }, itemIndex) => (
+          <article key={title} className={`metric-card min-h-[310px] border-brand-border p-7 md:p-9 ${itemIndex ? 'border-t md:border-l md:border-t-0' : ''} ${itemIndex === 2 ? 'md:border-l-0 md:border-t xl:border-l xl:border-t-0' : ''}`}>
+            <div className="flex items-start justify-between">
+              <Icon className="h-6 w-6 text-brand-accent" strokeWidth={1.5} />
+              <span className="font-mono text-[10px] tracking-widest text-gray-600">// {index}</span>
+            </div>
+            <h3 className="mt-20 font-display text-2xl font-medium tracking-[-.03em] text-brand-white">{title}</h3>
+            <p className="mt-4 text-sm font-light leading-relaxed text-gray-500">{description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);

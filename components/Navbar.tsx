@@ -1,99 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Hexagon } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+
+const links = [
+  { name: 'Platform', href: '#platform' },
+  { name: 'Applications', href: '#applications' },
+  { name: 'Mission', href: '#mission' },
+  { name: 'Story', href: '#story' },
+  { name: 'Press', href: '#press' },
+];
+
+export const Mark: React.FC<{ compact?: boolean }> = ({ compact = false }) => (
+  <div className="flex items-center gap-3">
+    <span className="logo-mark-crop" aria-hidden="true">
+      <img src="/assets/artskin-logo.png" alt="" />
+    </span>
+    <span className="font-display text-lg font-semibold tracking-[-0.03em] text-brand-white">
+      ArtSkin{!compact && <span className="text-brand-accent">.</span>}
+    </span>
+  </div>
+);
 
 export const Navbar: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Mission', href: '#mission' },
-    { name: 'Technology', href: '#technology' },
-    { name: 'Story', href: '#story' },
-    { name: 'Roadmap', href: '#roadmap' },
-    { name: 'Press', href: '#press' },
-  ];
-
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
-        isScrolled 
-          ? 'bg-brand-black/90 backdrop-blur-xl border-brand-border' 
-          : 'bg-transparent border-transparent py-4'
-      }`}
-    >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center space-x-3 cursor-pointer group" onClick={() => window.scrollTo(0,0)}>
-            <Hexagon className="h-6 w-6 text-white stroke-2 group-hover:text-brand-accent transition-colors" />
-            <span className="text-xl font-display font-bold tracking-widest text-white uppercase">
-              ArtSkin
-            </span>
-          </div>
+    <nav className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${scrolled ? 'glass border-brand-border' : 'border-transparent bg-transparent'}`}>
+      <div className="mx-auto flex h-[76px] max-w-[1480px] items-center justify-between px-5 md:px-10">
+        <a href="#top" aria-label="ArtSkin home"><Mark /></a>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-10">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-xs font-medium tracking-widest uppercase text-gray-400 hover:text-white transition-colors duration-200"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <a 
-                href="#contact"
-                className="bg-white hover:bg-gray-200 text-black px-6 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300"
-              >
-                Inquire
-              </a>
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white hover:text-brand-accent focus:outline-none"
-            >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+        <div className="hidden items-center gap-9 md:flex">
+          {links.map(link => (
+            <a key={link.name} href={link.href} className="text-[11px] font-medium uppercase tracking-[.16em] text-gray-400 transition-colors hover:text-brand-white">
+              {link.name}
+            </a>
+          ))}
         </div>
+
+        <a href="mailto:contact@artskin.tech?subject=ArtSkin%20partnership" className="hidden items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[.14em] text-brand-white transition hover:border-brand-accent hover:text-brand-accent md:flex">
+          Partner with us <ArrowUpRight className="h-3.5 w-3.5" />
+        </a>
+
+        <button className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white md:hidden" onClick={() => setOpen(value => !value)} aria-label="Toggle navigation" aria-expanded={open}>
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-brand-black border-b border-brand-border">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="block px-3 py-4 text-sm font-display uppercase tracking-widest text-gray-300 hover:text-white border-b border-brand-border"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-             <a
-                href="#contact"
-                className="block px-3 py-4 mt-2 text-center text-sm font-bold uppercase tracking-widest bg-white text-black"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Inquire
-              </a>
-          </div>
+      {open && (
+        <div className="glass border-t border-brand-border px-5 pb-6 pt-2 md:hidden">
+          {links.map(link => (
+            <a key={link.name} href={link.href} onClick={() => setOpen(false)} className="block border-b border-brand-border py-4 font-display text-xl text-brand-white">
+              {link.name}
+            </a>
+          ))}
+          <a href="mailto:contact@artskin.tech?subject=ArtSkin%20partnership" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-brand-white px-5 py-3 text-xs font-semibold uppercase tracking-wider text-brand-black">
+            Partner with us <ArrowUpRight className="h-4 w-4" />
+          </a>
         </div>
       )}
     </nav>
