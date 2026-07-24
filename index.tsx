@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './styles.css';
+import { initAnalytics } from './analytics';
 
 const currentUrl = new URL(window.location.href);
 if (currentUrl.searchParams.has('deploy')) {
   currentUrl.searchParams.delete('deploy');
   window.history.replaceState({}, '', `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`);
 }
+
+initAnalytics();
 
 if (import.meta.env.VITE_PUBLIC_POSTHOG_TOKEN) {
   const loadAnalytics = () => {
