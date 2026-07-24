@@ -381,7 +381,7 @@ export const SensoryWorkflow: React.FC = () => (
       <div className="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-start lg:gap-16">
         <figure className="workflow-visual overflow-hidden rounded-[2rem] border border-brand-border bg-[#050a09]">
           <img
-            src="/assets/artskin-sensory-workflow.png"
+            src="/assets/artskin-sensory-workflow.webp"
             alt="ArtSkin sensory feedback workflow from touch on a prosthetic hand through the forearm sensory interface to learned perception"
             className="block h-auto w-full"
           />
