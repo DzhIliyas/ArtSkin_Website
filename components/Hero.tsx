@@ -48,7 +48,7 @@ const defaultSensorZones = [
   { x: 451, y: 808, label: 'Lower palm left' },
 ];
 
-const braceletPairByPalmZone = [1, 3, 5, 7, 6, 8, 10, 12, 13, 15, 2, 9, 14, 4, 11, 16];
+const braceletPairByPalmZone = [1, 3, 5, 7, 6, 8, 10, 12, 13, 15, 14, 9, 2, 16, 11, 4];
 const zoneLayoutStorageKey = 'artskin-sensor-zone-layout-v8';
 
 const TactileField: React.FC = () => {
