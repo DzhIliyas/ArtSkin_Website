@@ -379,17 +379,9 @@ export const SensoryWorkflow: React.FC = () => (
   <section id="how-it-works" className="workflow-section section-rule bg-brand-black py-24 md:py-36">
     <div className="mx-auto max-w-[1480px] px-5 md:px-10">
       <div className="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-start lg:gap-16">
-        <figure className="workflow-visual overflow-hidden rounded-[2rem] border border-brand-border bg-[#050a09]">
-          <img
-            src="/assets/artskin-sensory-workflow.webp"
-            alt="ArtSkin sensory feedback workflow from touch on a prosthetic hand through the forearm sensory interface to learned perception"
-            className="block h-auto w-full"
-          />
-          <figcaption className="flex items-center justify-between gap-4 border-t border-white/10 px-5 py-4 font-mono text-[8px] uppercase tracking-[.14em] text-gray-600 md:px-7">
-            <span>Touch → Translation → Feedback → Perception</span>
-            <span className="text-brand-accent">ArtSkin / 01</span>
-          </figcaption>
-        </figure>
+        <div className="flex justify-center">
+          <TactileField />
+        </div>
 
         <div className="lg:sticky lg:top-28">
           <span className="eyebrow">How it works</span>
@@ -416,9 +408,6 @@ export const SensoryWorkflow: React.FC = () => (
           </ol>
         </div>
 
-        <div className="mt-2 flex justify-center lg:col-start-1">
-          <TactileField />
-        </div>
       </div>
     </div>
   </section>
